@@ -249,10 +249,11 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Ooops! Something went wrong!');
 });
 
-// GET requests for documentation page 
-app.get('/documentation', (req, res) => {
-    res.sendFile('/public/documentation.html', { root: __dirname })
+// GET requests
+app.get('/', function(req, res) {
+  res.send('Welcome to myFlix movies!');
 });
+
 
 // listen for requests
 var port = process.env.PORT || 3000;
