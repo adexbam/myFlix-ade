@@ -249,9 +249,9 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Ooops! Something went wrong!');
 });
 
-// GET requests
-app.get('/', function(req, res) {
-  res.send('Welcome to myFlix movies!');
+// GET requests for documentation page 
+app.get('/documentation', (req, res) => {
+    res.sendFile('/public/documentation.html', { root: __dirname })
 });
 
 // listen for requests
