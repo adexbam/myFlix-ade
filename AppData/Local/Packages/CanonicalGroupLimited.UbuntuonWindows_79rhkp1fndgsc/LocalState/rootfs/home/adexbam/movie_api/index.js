@@ -23,7 +23,7 @@ app.use(express.static('public'));
 app.use(morgan('common'));
 app.use(bodyParser.json());
 //import your “auth.js” file into your project
-var auth = require('./auth')(app);
+require('./auth')(app);
 //require the Passport module and import the “passport.js” file
 const passport = require('passport');
 require('./passport');
