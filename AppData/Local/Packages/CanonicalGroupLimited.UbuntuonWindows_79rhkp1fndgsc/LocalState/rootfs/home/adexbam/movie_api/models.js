@@ -1,6 +1,4 @@
-//importing mongoose
 const mongoose = require('mongoose');
-//importing bcrypt
 const bcrypt = require('bcrypt');
 
 var movieSchema = mongoose.Schema({
@@ -32,7 +30,7 @@ userSchema.statics.hashPassword = function(password) {
 };
 
 userSchema.methods.validatePassword = function(password) {
-  return bcrypt.compareSync(password, this.Password); 
+  return bcrypt.compareSync(password, this.Password);
 };
 
 var Movie = mongoose.model('Movie', movieSchema);
