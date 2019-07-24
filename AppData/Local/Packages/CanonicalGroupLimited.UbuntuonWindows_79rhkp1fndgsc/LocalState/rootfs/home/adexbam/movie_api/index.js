@@ -46,7 +46,7 @@ app.use(cors({
 }));
 
 // GET request for JSON object to return a list of ALL movies to the user
-app.get("/movies", function(req, res) {
+app.get("/movies", function(_req, res) {
   Movies.find()
   .then(function(movies) {
     res.status(201).json(movies)
@@ -136,7 +136,7 @@ app.post('/users', (req, res) => {
 });
 
 // Get all users
-app.get('/users', passport.authenticate('jwt', { session: false }), function(req, res) {
+app.get('/users', passport.authenticate('jwt', { session: false }), function(_req, res) {
   Users.find()
   .then(function(users) {
     res.status(201).json(users)
@@ -244,13 +244,13 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 })
 
 // Allows access to requested file from "public" folder
-app.use(function (err, req, res, next) {
+app.use(function (err, _req, res, _next) {
   console.error(err.stack);
   res.status(500).send('Ooops! Something went wrong!');
 });
 
 // GET requests
-app.get('/', function(req, res) {
+app.get('/', function(_req, res) {
   res.send('Welcome to myFlix movies!');
 });
 
