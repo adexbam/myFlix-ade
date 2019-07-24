@@ -4,7 +4,7 @@ const Models = require('./models.js');
 const bodyParser = require('body-parser');
 const Movies = Models.Movie;
 const Users = Models.User;
-const validator = require('express-validator');
+
 
 //mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true});
 mongoose.connect('mongodb+srv://myFlixAdeDbAdmin:Ab@17051989@myflixadedb-2isws.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
@@ -13,6 +13,7 @@ mongoose.set('useFindAndModify', false);
 //importing express
 const express = require('express');
 const app = express();
+const validator = require('express-validator');
 //importing morgan
 const morgan = require('morgan');
 //use express validator library
