@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 const bodyParser = require('body-parser');
+const validator = require('express-validator');
 const Movies = Models.Movie;
 const Users = Models.User;
 
@@ -12,10 +13,11 @@ mongoose.set('useFindAndModify', false);
 //importing express
 const express = require('express');
 const app = express();
-const validator = require('express-validator');
+
 //importing morgan
 const morgan = require('morgan');
 //use express validator library
+app.use(bodyParser.urlencoded());
 app.use(validator());
 //serves documentation.html file from public folder
 app.use(express.static('public'));
