@@ -16,7 +16,11 @@ export default class MainView extends React.Component {
   }
 
   componentDidMount() {
-    /* ... */
+    axios.get('https://myflix-ade.herokuapp.com/movies').
+    then(response => {
+      this.setState({movies: response.data})
+    })
+    .catch(error => this.setState({error: error.message}))
   }
 
   onMovieClick(movie) {
