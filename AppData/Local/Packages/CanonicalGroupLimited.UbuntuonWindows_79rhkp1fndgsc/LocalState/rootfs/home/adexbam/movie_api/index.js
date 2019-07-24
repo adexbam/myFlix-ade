@@ -45,7 +45,7 @@ app.use(cors({
   }
 }));
 
-// GET request for JSON object to return a list of ALL movies to the user
+// GET request(JSON object to return list of ALL movies to the user)
 app.get("/movies", function(_req, res) {
   Movies.find()
   .then(function(movies) {
