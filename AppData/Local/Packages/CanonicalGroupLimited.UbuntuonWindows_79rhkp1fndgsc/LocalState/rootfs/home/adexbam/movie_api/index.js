@@ -2,23 +2,22 @@
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 const bodyParser = require('body-parser');
-const validator = require('express-validator');
 const Movies = Models.Movie;
 const Users = Models.User;
+const express = require('express');
+const app = express();
+const validator = require('express-validator');
+const morgan = require('morgan');
+const passport = require('passport');
+require('./passport');
+const cors = require('cors');
 
 //mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true});
 mongoose.connect('mongodb+srv://myFlixAdeDbAdmin:Ab@17051989@myflixadedb-2isws.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
-//importing express
-const express = require('express');
-const app = express();
-
-//importing morgan
-const morgan = require('morgan');
 //use express validator library
-app.use(bodyParser.urlencoded());
-app.use(validator());
+//app.use(validator());
 //serves documentation.html file from public folder
 app.use(express.static('public'));
 //logs requests using Morgan’s “common” format
@@ -26,11 +25,7 @@ app.use(morgan('common'));
 app.use(bodyParser.json());
 //import your “auth.js” file into your project
 require('./auth')(app);
-//require the Passport module and import the “passport.js” file
-const passport = require('passport');
-require('./passport');
-//importing and using CORS
-const cors = require('cors');
+
 app.use(cors());
 
 //CORS code to allow requests from only certain origins to be given access
