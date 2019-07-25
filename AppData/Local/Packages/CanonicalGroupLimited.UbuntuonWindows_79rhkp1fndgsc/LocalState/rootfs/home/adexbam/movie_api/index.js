@@ -67,8 +67,8 @@ app.post('/movies', function(req, res) {
         Description: req.body.Description,
         Genre: req.body.Genre,
         Director: req.body.Director,
-      	ImagePath: req.body.Director,
-	      Featured: req.body.Director
+      	ImagePath: req.ImagePath,
+	      Featured: req.body.Featured
       })
       .then(function(movie) {res.status(201).json(movie) })
       .catch(function(error) {
