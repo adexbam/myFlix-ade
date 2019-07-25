@@ -29,7 +29,7 @@ require('./auth')(app);
 app.use(cors());
 
 //CORS code to allow requests from only certain origins to be given access
-var allowedOrigins = ['http://localhost:1234', 'http://myflix-ade.herokuapp.com'];
+var allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://myflix-ade.herokuapp.com'];
 
 app.use(cors({
   origin: function(origin, callback){
@@ -52,6 +52,20 @@ app.get("/movies", function(_req, res) {
     console.error(err);
     res.status(500).send("Error: " + err);
   });
+});
+
+// Adds data for a new movie to the list of movies.
+app.post("/movies", (req, res) => {
+  let newMovie = req.body;
+
+  if (!newMovie.name) {
+    const message = "Missing name in request body";
+    res.status(400).send(message);
+  } else {
+    newMovie.id = uuid.v4();
+    Movie.push(newMovie);
+    res.status(201).send(newMovie);
+  }
 });
 
 // Get a movie by title
