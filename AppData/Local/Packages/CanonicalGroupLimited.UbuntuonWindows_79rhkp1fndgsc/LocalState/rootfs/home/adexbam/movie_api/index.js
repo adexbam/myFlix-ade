@@ -55,18 +55,31 @@ app.get("/movies", function(_req, res) {
 });
 
 // Adds data for a new movie to the list of movies.
-app.post("/movies", (req, res) => {
-  let newMovie = req.body;
-
-  if (!newMovie.title) {
-    const message = "Missing title in request body";
-    res.status(400).send(message);
-  } else {
-    newMovie.id = uuid.v4();
-    Movie.push(newMovie);
-    res.status(201).send(newMovie);
-  }
-});
+app.post('/movies', function(req, res) {
+  Movies.findOne({ Title : req.body.Title })
+  .then(function(movie) {
+    if (movie) {
+      return res.status(400).send(req.body.Title + "already exists");
+    } else {
+      Movies
+      .create({
+        Title: req.body.Title,
+        Description: req.body.Description,
+        Genre: req.body.Genre,
+        Director: req.body.Director,
+      	ImagePath: req.body.Director,
+	      Featured: req.body.Director
+      })
+      .then(function(movie) {res.status(201).json(movie) })
+      .catch(function(error) {
+        console.error(error);
+        res.status(500).send("Error: " + error);
+      })
+    }
+  }).catch(function(error) {
+    console.error(error);
+    res.status(500).send("Error: " + error);
+  });
 
 // Get a movie by title
 app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), function(req, res) {
