@@ -58,8 +58,8 @@ app.get("/movies", function(_req, res) {
 app.post("/movies", (req, res) => {
   let newMovie = req.body;
 
-  if (!newMovie.name) {
-    const message = "Missing name in request body";
+  if (!newMovie.Title) {
+    const message = "Missing title in request body";
     res.status(400).send(message);
   } else {
     newMovie.id = uuid.v4();
