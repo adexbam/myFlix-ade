@@ -57,9 +57,15 @@ app.get("/movies", function(_req, res) {
 // Adds data for a new movie to the list of movies.
 app.post("/movies", (req, res) => {
   let newMovie = req.body;
+
+  if (!newMovie.title) {
+    const message = "Missing title in request body";
+    res.status(400).send(message);
+  } else {
     newMovie.id = uuid.v4();
     Movie.push(newMovie);
     res.status(201).send(newMovie);
+  }
 });
 
 // Get a movie by title
