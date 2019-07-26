@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class MovieCard extends React.Component {
+export class MovieCard extends React.Component {
   render() {
     const { movie, onClick } = this.props;
 
@@ -9,3 +9,5 @@ export default class MovieCard extends React.Component {
     );
   }
 }
+
+export default MovieCard

@@ -27467,7 +27467,7 @@ module.exports = require('./lib/axios');
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.MovieCard = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -27520,14 +27520,16 @@ function (_React$Component) {
   return MovieCard;
 }(_react.default.Component);
 
-exports.default = MovieCard;
+exports.MovieCard = MovieCard;
+var _default = MovieCard;
+exports.default = _default;
 },{"react":"../../node_modules/react/index.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.MovieView = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -27569,7 +27571,9 @@ function (_React$Component) {
   _createClass(MovieView, [{
     key: "render",
     value: function render() {
-      var movie = this.props.movie;
+      var _this$props = this.props,
+          movie = _this$props.movie,
+          _onClick = _this$props.onClick;
       if (!movie) return null;
       return _react.default.createElement("div", {
         className: "movie-view"
@@ -27601,19 +27605,9 @@ function (_React$Component) {
       }, "Director"), _react.default.createElement("div", {
         className: "value"
       }, movie.Director.Name)), _react.default.createElement("button", {
-        onClick: function (_onClick) {
-          function onClick() {
-            return _onClick.apply(this, arguments);
-          }
-
-          onClick.toString = function () {
-            return _onClick.toString();
-          };
-
-          return onClick;
-        }(function () {
-          return onClick();
-        }),
+        onClick: function onClick() {
+          return _onClick();
+        },
         className: "return-button"
       }, "To movie list"));
     }
@@ -27622,14 +27616,16 @@ function (_React$Component) {
   return MovieView;
 }(_react.default.Component);
 
-exports.default = MovieView;
+exports.MovieView = MovieView;
+var _default = MovieView;
+exports.default = _default;
 },{"react":"../../node_modules/react/index.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.MainView = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -27740,7 +27736,9 @@ function (_React$Component) {
   return MainView;
 }(_react.default.Component);
 
-exports.default = MainView;
+exports.MainView = MainView;
+var _default = MainView;
+exports.default = _default;
 },{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx"}],"../../../../../../../../../../Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
@@ -27898,7 +27896,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51802" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51138" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class MovieView extends React.Component {
+export class MovieView extends React.Component {
 
   constructor() {
     super();
@@ -37,3 +37,5 @@ export default class MovieView extends React.Component {
     );
   }
 }
+
+export default MovieView
