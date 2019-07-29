@@ -32964,7 +32964,7 @@ module.exports = exports["default"];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MovieCard = void 0;
+exports.default = exports.MovieCard = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -32996,8 +32996,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var MovieCard =
 /*#__PURE__*/
-function (_React$component) {
-  _inherits(MovieCard, _React$component);
+function (_React$Component) {
+  _inherits(MovieCard, _React$Component);
 
   function MovieCard() {
     _classCallCheck(this, MovieCard);
@@ -33028,7 +33028,7 @@ function (_React$component) {
   }]);
 
   return MovieCard;
-}(_react.default.component);
+}(_react.default.Component);
 
 exports.MovieCard = MovieCard;
 MovieCard.PropTypes = {
@@ -33037,6 +33037,8 @@ MovieCard.PropTypes = {
   }).isRequired,
   onClick: _propTypes.default.func.isRequired
 };
+var _default = MovieCard;
+exports.default = _default;
 },{"react":"../../node_modules/react/index.js","prop-types":"../../node_modules/prop-types/index.js","react-bootstrap/Button":"../../node_modules/react-bootstrap/Button.js","react-bootstrap/Card":"../../node_modules/react-bootstrap/Card.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -33386,7 +33388,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61485" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63264" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

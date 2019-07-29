@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export class MovieCard extends React.component {
+export class MovieCard extends React.Component {
   render() {
     const { movie, onClick } = this.props;
 
@@ -27,3 +27,4 @@ MovieCard.PropTypes = {
   onClick: PropTypes.func.isRequired
 }
 
+export default MovieCard
