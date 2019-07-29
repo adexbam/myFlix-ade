@@ -1,5 +1,16 @@
 .my-flix {
-  color: steelblue;
+  color: #010407;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  background-color: #D3D3D3;
+}
+
+.header-name {
+  font-family: "Schoolbell", cursive;
+  font-size: 30px;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

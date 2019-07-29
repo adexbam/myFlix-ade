@@ -27,4 +27,3 @@ MovieCard.PropTypes = {
   onClick: PropTypes.func.isRequired
 }
 
-export default MovieCard

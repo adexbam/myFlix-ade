@@ -1,8 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
 
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -42,16 +39,23 @@ export class MainView extends React.Component {
     });
   }
 
-  clickHandle() {
+  onClickHandle() {
     this.setState({
       selectedMovie: null
+    });
+  }
+  
+  onSignedIn(user) {
+    this.setState({
+      user: user,
+      register: false
     });
   }
 
   register() {
     this.setState({
       register: true
-    });
+    })
   }
 
 
@@ -59,14 +63,16 @@ export class MainView extends React.Component {
   render() {
     const { movies, selectedMovie, user, register } = this.state;
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    if (!user && register === false) return <LoginView onClick={() => this.register()} onLoggedIn={user => this.onLoggedIn(user)} />
+
+    if (register) return <RegistrationView onSignedIn={user => this.onSignedIn(user)} />
     // Before the movies have been loaded
     if (!movies) return <div className="main-view"/>;
 
     return (
      <div className="main-view">
       {selectedMovie
-         ? (<MovieView movie={selectedMovie}onClick={() => this.clickHandle()}/>)
+         ? (<MovieView movie={selectedMovie}onClick={() => this.onClickHandle()}/>)
          : (movies.map(movie => (
            <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)}/>)
          ))
