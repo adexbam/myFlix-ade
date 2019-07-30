@@ -67,6 +67,3 @@ export function RegistrationView(props) {
       </div>
     );
   }
-
-
-export default RegistrationView
