@@ -27503,13 +27503,13 @@ function LoginView(props) {
     props.onLoggedIn(username);
   };
 
-  return _react.default.createElement("form", null, _react.default.createElement("label", null, "Username:", _react.default.createElement("input", {
+  return _react.default.createElement("form", null, _react.default.createElement("label", null, "Username :", _react.default.createElement("input", {
     type: "text",
     value: username,
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
-  })), _react.default.createElement("label", null, "Password:", _react.default.createElement("input", {
+  })), _react.default.createElement("br", null), _react.default.createElement("label", null, "Password :", _react.default.createElement("input", {
     type: "password",
     value: password,
     onChange: function onChange(e) {
@@ -33388,7 +33388,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63264" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64138" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

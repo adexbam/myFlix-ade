@@ -1,16 +1,15 @@
-// Integrating Mongoose with a REST API
-import { connect, set } from 'mongoose';
-import { Movie, User } from './models.js';
-import { json } from 'body-parser';
-const Movies = Movie;
-const Users = User;
-import express, { static } from 'express';
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+const bodyParser = require('body-parser');
+const Movies = Models.Movie;
+const Users = Models.User;
+const express = require('express');
 const app = express();
-import validator from 'express-validator';
-import morgan from 'morgan';
-import { authenticate } from 'passport';
-import './passport';
-import cors from 'cors';
+const validator = require('express-validator');
+const morgan = require('morgan');
+const passport = require('passport');
+require('./passport');
+const cors = require('cors');
 
 //mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true});
 connect('mongodb+srv://myFlixAdeDbAdmin:Ab@17051989@myflixadedb-2isws.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
