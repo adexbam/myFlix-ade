@@ -27533,59 +27533,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../../../../../Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/login-view/login-view.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../../../../../Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _extends;
-
-function _extends() {
-  exports.default = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-},{}],"../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _objectWithoutPropertiesLoose;
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-},{}],"../../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../../../../../Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.8.6
  * react-is.development.js
  *
@@ -28497,7 +28445,59 @@ if ("development" !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = require('./factoryWithThrowingShims')();
 }
-},{"react-is":"../../node_modules/react-is/index.js","./factoryWithTypeCheckers":"../../node_modules/prop-types/factoryWithTypeCheckers.js"}],"../../node_modules/classnames/index.js":[function(require,module,exports) {
+},{"react-is":"../../node_modules/react-is/index.js","./factoryWithTypeCheckers":"../../node_modules/prop-types/factoryWithTypeCheckers.js"}],"components/login-view/login-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../../../../../../Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _extends;
+
+function _extends() {
+  exports.default = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+},{}],"../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _objectWithoutPropertiesLoose;
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+},{}],"../../node_modules/classnames/index.js":[function(require,module,exports) {
 var define;
 /*!
   Copyright (c) 2017 Jed Watson.
@@ -42648,9 +42648,13 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 require("./login-view.scss");
 
 var _reactstrap = require("reactstrap");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -42710,9 +42714,13 @@ function LoginView(props) {
   }, "register")));
 }
 
+LoginView.PropTypes = {
+  onLoggedIn: _propTypes.default.func.isRequired,
+  onClick: _propTypes.default.func.isRequired
+};
 var _default = LoginView;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./login-view.scss":"components/login-view/login-view.scss","reactstrap":"../../node_modules/reactstrap/es/index.js"}],"../../node_modules/@babel/runtime/helpers/interopRequireWildcard.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","prop-types":"../../node_modules/prop-types/index.js","./login-view.scss":"components/login-view/login-view.scss","reactstrap":"../../node_modules/reactstrap/es/index.js"}],"../../node_modules/@babel/runtime/helpers/interopRequireWildcard.js":[function(require,module,exports) {
 function _interopRequireWildcard(obj) {
   if (obj && obj.__esModule) {
     return obj;
@@ -47008,9 +47016,15 @@ exports.default = exports.MovieView = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _MovieView$propTypes;
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -47092,9 +47106,26 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieView = MovieView;
+MovieView.propTypes = (_MovieView$propTypes = {
+  movie: _propTypes.default.shape({
+    Title: _propTypes.default.string
+  }).isRequired
+}, _defineProperty(_MovieView$propTypes, "movie", _propTypes.default.shape({
+  Description: _propTypes.default.string
+}).isRequired), _defineProperty(_MovieView$propTypes, "movie", _propTypes.default.shape({
+  ImagePath: _propTypes.default.string
+}).isRequired), _defineProperty(_MovieView$propTypes, "movie", _propTypes.default.shape({
+  Genre: _propTypes.default.shape({
+    Name: _propTypes.default.string
+  })
+}).isRequired), _defineProperty(_MovieView$propTypes, "movie", _propTypes.default.shape({
+  Director: _propTypes.default.shape({
+    Name: _propTypes.default.string
+  })
+}).isRequired), _defineProperty(_MovieView$propTypes, "onClick", _propTypes.default.func.isRequired), _MovieView$propTypes);
 var _default = MovieView;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","prop-types":"../../node_modules/prop-types/index.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47349,7 +47380,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49739" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50761" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

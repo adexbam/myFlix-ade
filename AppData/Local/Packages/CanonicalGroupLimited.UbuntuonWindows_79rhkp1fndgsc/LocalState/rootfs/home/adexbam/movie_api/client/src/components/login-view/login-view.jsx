@@ -28,7 +28,7 @@ export function LoginView(props) {
         <Input type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </FormGroup>
       <Button className="btn-lg btn-dark btn-block" type="button" onClick={handleSubmit}>Submit</Button>
-      <p className="text-center pt-3">Or <a href="./registration-view/registration-view.jsx/">register</a></p>
+      <p className="text-center pt-3">Or <Link to={'./registration-view/registration-view.jsx'}>register</Link></p> 
     </Form>
   );
 }
