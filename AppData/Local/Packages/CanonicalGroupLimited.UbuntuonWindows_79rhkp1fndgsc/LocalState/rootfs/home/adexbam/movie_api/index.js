@@ -18,10 +18,10 @@ mongoose.set('useFindAndModify', false);
 //use express validator library
 //app.use(validator());
 //serves documentation.html file from public folder
-app.use(static('public'));
+app.use(express.static('public'));
 //logs requests using Morgan’s “common” format
 app.use(morgan('common'));
-app.use(json());
+app.use(bodyParser.json());
 //import your “auth.js” file into your project
 require('./auth')(app);
 
