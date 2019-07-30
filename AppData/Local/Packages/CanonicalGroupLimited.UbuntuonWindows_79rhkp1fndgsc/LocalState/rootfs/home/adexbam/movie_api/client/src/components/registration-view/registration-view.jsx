@@ -62,7 +62,7 @@ export function RegistrationView(props) {
         <Button variant="primary" type="button" onClick={handleSubmit}>
         SIGN IN
         </Button>
-        <p>Already a member?<Link to={'/'}><span> LOG IN</span></Link></p>
+        <p>Already a member?<Link to={'./login-view.jsx'}><span> LOG IN</span></Link></p>
       </Form>
       </div>
     );
