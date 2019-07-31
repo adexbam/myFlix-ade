@@ -45567,7 +45567,7 @@ function LoginView(props) {
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
 
-    _axios.default.post('https://myflix-ade.herokuapp.com/users', {
+    _axios.default.post('https://myflix-ade.herokuapp.com/login', {
       Username: username,
       Password: password
     }).then(function (response) {
@@ -45601,7 +45601,7 @@ function LoginView(props) {
   }, "Submit"), _react.default.createElement(_reactstrap.Button, {
     className: "btn-lg btn-light btn-block",
     type: "button",
-    onClick: props.register()
+    onClick: props.register
   }, "Register"));
 }
 
@@ -46661,6 +46661,8 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _reactRouterDom = require("react-router-dom");
 
 require("./registration-view.scss");
@@ -46704,7 +46706,7 @@ function RegistrationView(props) {
     _axios.default.post('https://myflix-ade.herokuapp.com/users', {
       Username: username,
       Password: password,
-      EMail: email,
+      Email: email,
       Birthday: birthday
     }).then(function (response) {
       var data = response.data;
@@ -46717,7 +46719,9 @@ function RegistrationView(props) {
 
   return _react.default.createElement("div", {
     className: "registration-view"
-  }, _react.default.createElement(_Form.default, null, _react.default.createElement("h2", null, "Sign In!"), _react.default.createElement(_Form.default.Group, {
+  }, _react.default.createElement(_Form.default, {
+    className: "registration-form"
+  }, _react.default.createElement("h2", null, "Sign In!"), _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
   }, _react.default.createElement(_Form.default.Label, null, "Your Username"), _react.default.createElement(_Form.default.Control, {
     type: "text",
@@ -46756,14 +46760,21 @@ function RegistrationView(props) {
     },
     placeholder: "01.01.2000"
   })), _react.default.createElement(_Button.default, {
+    className: "btn-lg btn-dark btn-block",
     variant: "primary",
     type: "button",
     onClick: handleSubmit
-  }, "SIGN IN"), _react.default.createElement("p", null, "Already a member?", _react.default.createElement(_reactRouterDom.Link, {
-    to: props.register()
-  }, _react.default.createElement("span", null, " LOG IN")))));
+  }, "Register"), _react.default.createElement(_Button.default, {
+    className: "btn-lg btn-light btn-block",
+    type: "button",
+    onClick: props.loginComponent
+  }, "Login")));
 }
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","react-bootstrap/Button":"../../node_modules/react-bootstrap/Button.js","react-bootstrap/Form":"../../node_modules/react-bootstrap/Form.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"../../node_modules/react-bootstrap/utils/divWithClassName.js":[function(require,module,exports) {
+
+RegistrationView.propTypes = {
+  loginComponent: _propTypes.default.func.isRequired
+};
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","react-bootstrap/Button":"../../node_modules/react-bootstrap/Button.js","react-bootstrap/Form":"../../node_modules/react-bootstrap/Form.js","prop-types":"../../node_modules/prop-types/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"../../node_modules/react-bootstrap/utils/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -47159,9 +47170,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -47172,18 +47183,20 @@ var MainView =
 function (_React$Component) {
   _inherits(MainView, _React$Component);
 
-  function MainView() {
+  function MainView(props) {
     var _this;
 
     _classCallCheck(this, MainView);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MainView).call(this));
-    state = {
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MainView).call(this, props));
+    _this.state = {
       movies: null,
       selectedMovie: null,
       user: null,
       register: false
     };
+    _this.register = _this.register.bind(_assertThisInitialized(_this));
+    _this.loginComponent = _this.loginComponent.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -47239,6 +47252,13 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "loginComponent",
+    value: function loginComponent() {
+      this.setState({
+        register: false
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -47258,10 +47278,7 @@ function (_React$Component) {
         register: this.register
       });
       if (register) return _react.default.createElement(_registrationView.RegistrationView, {
-        onSignedIn: function onSignedIn(user) {
-          return _this3.onSignedIn(user);
-        },
-        register: this.register
+        loginComponent: this.loginComponent
       }); // Before the movies have been loaded
 
       if (!movies) return _react.default.createElement("div", {
@@ -47381,7 +47398,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59248" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60695" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

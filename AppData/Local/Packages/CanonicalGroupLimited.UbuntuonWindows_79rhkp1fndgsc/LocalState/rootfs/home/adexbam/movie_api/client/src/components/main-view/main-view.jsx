@@ -9,13 +9,17 @@ import { MovieView } from '../movie-view/movie-view';
 
 class MainView extends React.Component {
 
-
-    state = {
+  constructor(props) {
+    super(props);
+    this.state = {
       movies: null,
       selectedMovie: null,
       user: null,
       register: false
     };
+    this.register = this.register.bind(this);
+    this.loginComponent = this.loginComponent.bind(this);
+  }
 
 
   componentDidMount() {
@@ -57,6 +61,12 @@ class MainView extends React.Component {
     })
   }
 
+  loginComponent(){
+    this.setState({
+      register: false
+    })
+  }
+
 
 
   render() {
@@ -64,7 +74,7 @@ class MainView extends React.Component {
 
     if (!user && register === false) return <LoginView onClick={() => this.register()} onLoggedIn={user => this.onLoggedIn(user)} register={this.register}/>
 
-    if (register) return <RegistrationView onSignedIn={user => this.onSignedIn(user)} register={this.register}/>
+    if (register) return <RegistrationView loginComponent={this.loginComponent} />
     // Before the movies have been loaded
     if (!movies) return <div className="main-view"/>;
 

@@ -12,7 +12,7 @@ export function LoginView(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('https://myflix-ade.herokuapp.com/users', {
+    axios.post('https://myflix-ade.herokuapp.com/login', {
       Username: username,
       Password: password
     })
@@ -37,7 +37,7 @@ export function LoginView(props) {
         <Input type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </FormGroup>
       <Button className="btn-lg btn-dark btn-block" type="button" onClick={handleSubmit}>Submit</Button>
-      <Button className="btn-lg btn-light btn-block" type="button" onClick={props.register()}>Register</Button>
+      <Button className="btn-lg btn-light btn-block" type="button" onClick={props.register}>Register</Button>
     </Form>
   );
 }
