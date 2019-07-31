@@ -60,7 +60,7 @@ export function RegistrationView(props) {
         </Form.Group>
   
         <Button variant="primary" type="button" onClick={handleSubmit}>SIGN IN</Button>
-        <p>Already a member?<Link to={''}><span> LOG IN</span></Link></p>
+        <p>Already a member?<Link to={props.register()}><span> LOG IN</span></Link></p>
       </Form>
       </div>
     );
