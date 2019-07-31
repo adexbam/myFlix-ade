@@ -45607,7 +45607,8 @@ function LoginView(props) {
 
 LoginView.propTypes = {
   onLoggedIn: _propTypes.default.func.isRequired,
-  onClick: _propTypes.default.func.isRequired
+  onClick: _propTypes.default.func.isRequired,
+  register: _propTypes.default.func.isRequired
 };
 },{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","axios":"../../node_modules/axios/index.js","prop-types":"../../node_modules/prop-types/index.js","./login-view.scss":"components/login-view/login-view.scss","reactstrap":"../../node_modules/reactstrap/es/index.js"}],"../../node_modules/@babel/runtime/helpers/interopRequireWildcard.js":[function(require,module,exports) {
 function _interopRequireWildcard(obj) {
@@ -46759,7 +46760,7 @@ function RegistrationView(props) {
     type: "button",
     onClick: handleSubmit
   }, "SIGN IN"), _react.default.createElement("p", null, "Already a member?", _react.default.createElement(_reactRouterDom.Link, {
-    to: ''
+    to: props.register()
   }, _react.default.createElement("span", null, " LOG IN")))));
 }
 },{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","react-bootstrap/Button":"../../node_modules/react-bootstrap/Button.js","react-bootstrap/Form":"../../node_modules/react-bootstrap/Form.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"../../node_modules/react-bootstrap/utils/divWithClassName.js":[function(require,module,exports) {
@@ -47177,7 +47178,7 @@ function (_React$Component) {
     _classCallCheck(this, MainView);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MainView).call(this));
-    _this.state = {
+    state = {
       movies: null,
       selectedMovie: null,
       user: null,
@@ -47253,7 +47254,8 @@ function (_React$Component) {
         },
         onLoggedIn: function onLoggedIn(user) {
           return _this3.onLoggedIn(user);
-        }
+        },
+        register: this.register
       });
       if (register) return _react.default.createElement(_registrationView.RegistrationView, {
         onSignedIn: function onSignedIn(user) {
@@ -47379,7 +47381,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57699" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59248" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

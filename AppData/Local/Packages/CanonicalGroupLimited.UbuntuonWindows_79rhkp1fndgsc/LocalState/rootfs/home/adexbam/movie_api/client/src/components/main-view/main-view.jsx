@@ -9,16 +9,14 @@ import { MovieView } from '../movie-view/movie-view';
 
 class MainView extends React.Component {
 
-  constructor() {
-    super();
 
-    this.state = {
+    state = {
       movies: null,
       selectedMovie: null,
       user: null,
       register: false
     };
-  }
+
 
   componentDidMount() {
     axios.get('https://myflix-ade.herokuapp.com/movies').
@@ -64,7 +62,7 @@ class MainView extends React.Component {
   render() {
     const { movies, selectedMovie, user, register } = this.state;
 
-    if (!user && register === false) return <LoginView onClick={() => this.register()} onLoggedIn={user => this.onLoggedIn(user)} />
+    if (!user && register === false) return <LoginView onClick={() => this.register()} onLoggedIn={user => this.onLoggedIn(user)} register={this.register}/>
 
     if (register) return <RegistrationView onSignedIn={user => this.onSignedIn(user)} register={this.register}/>
     // Before the movies have been loaded
