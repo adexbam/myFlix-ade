@@ -66,7 +66,7 @@ class MainView extends React.Component {
 
     if (!user && register === false) return <LoginView onClick={() => this.register()} onLoggedIn={user => this.onLoggedIn(user)} />
 
-    if (register) return <RegistrationView onSignedIn={user => this.onSignedIn(user)} />
+    if (register) return <RegistrationView onSignedIn={user => this.onSignedIn(user)} register={this.register}/>
     // Before the movies have been loaded
     if (!movies) return <div className="main-view"/>;
 

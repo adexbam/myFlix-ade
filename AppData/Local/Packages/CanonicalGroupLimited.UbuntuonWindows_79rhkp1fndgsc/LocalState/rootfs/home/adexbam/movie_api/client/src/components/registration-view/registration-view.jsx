@@ -59,10 +59,8 @@ export function RegistrationView(props) {
           <Form.Control type="text" value={birthday} onChange={e => setBirthday(e.target.value)} placeholder="01.01.2000" />
         </Form.Group>
   
-        <Button variant="primary" type="button" onClick={handleSubmit}>
-        SIGN IN
-        </Button>
-        <p>Already a member?<Link to={'./login-view/login-view.jsx'}><span> LOG IN</span></Link></p>
+        <Button variant="primary" type="button" onClick={handleSubmit}>SIGN IN</Button>
+        <p>Already a member?<Link to={''}><span> LOG IN</span></Link></p>
       </Form>
       </div>
     );
