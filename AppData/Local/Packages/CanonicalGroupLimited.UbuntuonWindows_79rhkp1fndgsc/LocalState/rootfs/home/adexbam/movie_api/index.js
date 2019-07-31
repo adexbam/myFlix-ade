@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://myFlixAdeDbAdmin:Ab@17051989@myflixadedb-2isws.m
 mongoose.set('useFindAndModify', false);
 
 //use express validator library
-//app.use(validator());
+app.use(validator());
 //serves documentation.html file from public folder
 app.use(express.static('public'));
 //logs requests using Morgan’s “common” format
