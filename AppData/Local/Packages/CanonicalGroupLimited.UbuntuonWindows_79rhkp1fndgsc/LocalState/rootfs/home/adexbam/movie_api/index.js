@@ -28,7 +28,8 @@ require('./auth')(app);
 app.use(cors());
 
 //CORS code to allow requests from only certain origins to be given access
-var allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://myflix-ade.herokuapp.com'];
+//var allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://myflix-ade.herokuapp.com'];
+var allowedOrigins = ['*']
 
 app.use(cors({
   origin: function(origin, callback){
