@@ -29,7 +29,7 @@ app.use(cors());
 
 //CORS code to allow requests from only certain origins to be given access
 //var allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://myflix-ade.herokuapp.com'];
-var allowedOrigins = ['*']
+var allowedOrigins = ['*'];
 
 app.use(cors({
   origin: function(origin, callback){
@@ -41,7 +41,7 @@ app.use(cors({
     return callback(null, true);
   }
 }));
-
+require('./auth')(app);
 // GET request(JSON object to return list of ALL movies to the user)
 app.get("/movies", function(_req, res) {
   Movies.find()

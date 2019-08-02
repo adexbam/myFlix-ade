@@ -12,7 +12,7 @@ export function LoginView(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`https://myflix-ade.herokuapp.com/login?Username=${username}&Password=${password}`)
+    axios.post('https://myflix-ade.herokuapp.com/login?Username=${username}&Password=${password}')
     .then(response => {
       const data = response.data;
       props.onLoggedIn(data);
