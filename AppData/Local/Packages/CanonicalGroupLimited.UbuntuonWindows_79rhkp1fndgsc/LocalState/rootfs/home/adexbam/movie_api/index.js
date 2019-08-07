@@ -22,11 +22,9 @@ app.use(express.static('public'));
 //logs requests using Morgan’s “common” format
 app.use(morgan('common'));
 app.use(bodyParser.json());
-//import your “auth.js” file into your project
-require('./auth')(app);
+
 
 app.use(cors());
-
 //CORS code to allow requests from only certain origins to be given access
 //var allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://myflix-ade.herokuapp.com'];
 var allowedOrigins = ['*'];
@@ -41,6 +39,7 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+//import your “auth.js” file into your project
 require('./auth')(app);
 // GET request(JSON object to return list of ALL movies to the user)
 app.get("/movies", function(_req, res) {
