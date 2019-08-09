@@ -5,7 +5,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 const express = require('express');
 const app = express();
-const validator = require('express-validator');
+//const validator = require('express-validator');
 const morgan = require('morgan');
 const passport = require('passport');
 require('./passport');
@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://myFlixAdeDbAdmin:Ab@17051989@myflixadedb-2isws.m
 mongoose.set('useFindAndModify', false);
 
 //use express validator library
-app.use(validator());
+//app.use(validator());
 //serves documentation.html file from public folder
 app.use(express.static('public'));
 //logs requests using Morgan’s “common” format
@@ -26,8 +26,8 @@ app.use(bodyParser.json());
 
 app.use(cors());
 //CORS code to allow requests from only certain origins to be given access
-//var allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://myflix-ade.herokuapp.com'];
-var allowedOrigins = ['*'];
+var allowedOrigins = ['http://localhost:1234', 'http://localhost:3000', 'http://myflix-ade.herokuapp.com'];
+//var allowedOrigins = ['*'];
 
 app.use(cors({
   origin: function(origin, callback){
@@ -39,7 +39,8 @@ app.use(cors({
     return callback(null, true);
   }
 }));
-//import your “auth.js” file into your project
+
+//import “auth.js” file into your project
 require('./auth')(app);
 // GET request(JSON object to return list of ALL movies to the user)
 app.get("/movies", function(_req, res) {
