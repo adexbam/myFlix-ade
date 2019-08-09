@@ -42,8 +42,9 @@ app.use(cors({
 
 //import “auth.js” file into your project
 require('./auth')(app);
+
 // GET request(JSON object to return list of ALL movies to the user)
-app.get("/movies", function(_req, res) {
+app.get("/movies", passport.authenticate('jwt', { session: false }), function(_req, res) {
   Movies.find()
   .then(function(movies) {
     res.status(201).json(movies)
