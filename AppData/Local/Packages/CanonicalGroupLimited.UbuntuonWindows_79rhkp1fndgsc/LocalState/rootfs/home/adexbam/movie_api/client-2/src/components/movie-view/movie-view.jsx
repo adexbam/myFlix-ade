@@ -38,7 +38,6 @@ export class MovieView extends React.Component {
           <div className="label">Director:</div>
           <div className="value">{movie.Director.Name}</div>
           <Link to={'/directors/${movie.Director.Name}'}>
-            <Button variant="link">Director</Button>
           </Link>
         </div>
        <button onClick={() => onClick()}className="return-button">To movie list</button>
