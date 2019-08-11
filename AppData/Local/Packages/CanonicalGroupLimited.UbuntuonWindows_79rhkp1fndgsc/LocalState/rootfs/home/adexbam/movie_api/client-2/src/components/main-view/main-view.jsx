@@ -10,6 +10,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
+import { ProfileView } from '../profile-view/profile-view';
 
 export class MainView extends React.Component {
 
@@ -17,7 +18,7 @@ export class MainView extends React.Component {
     super(props);
 
     this.state = {
-      movies: null,
+      movies: [],
       user: null,
       register: false
     };
@@ -104,18 +105,17 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user, register } = this.state;
-
-    if (!user && register === false) return <LoginView onClick={() => this.register()} onLoggedIn={user => this.onLoggedIn(user)} register={this.register}/>
-
-    if (register) return <RegistrationView loginComponent={this.loginComponent} />
-    // Before the movies have been loaded
-    if (!movies) return <div className="main-view"/>;
+    const { movies, user } = this.state;
 
     return (
       <Router>
          <div className="main-view">
-          <Route exact path="/" render={() => movies.map(m => <MovieCard key={m._id} movie={m}/>)}/>
+          <Route exact path="/" render={() => {
+            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+            return movies.map(m => <MovieCard key={m._id} movie={m}/>)
+            }
+          }/>
+          <Route path="/register" render={() => <RegistrationView />} />
           <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/>}/>
           <Route path="/genres/:name" render={({ match }) => {
             if (!movies) return <div className="main-view"/>;
@@ -125,6 +125,7 @@ export class MainView extends React.Component {
             if (!movies) return <div className="main-view"/>;
             return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director}/>}
           } />
+           <Route exact path="/profile" render={() => <ProfileView />}/>
          </div>
       </Router>
     );
