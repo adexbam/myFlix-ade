@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import './login-view.scss';
 
+import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export function LoginView(props) {
@@ -36,7 +37,9 @@ export function LoginView(props) {
         <Input type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </FormGroup>
       <Button className="btn-lg btn-dark btn-block" type="button" onClick={handleSubmit}>Submit</Button>
-      <Button className="btn-lg btn-light btn-block" type="button" onClick={props.register}>Register</Button>
+      <Link to={'/register'}>
+        <Button variant="link">Register</Button>
+      </Link>
     </Form>
   );
 }
