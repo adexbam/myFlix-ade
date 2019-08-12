@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import PropTypes from 'prop-types';
 
+import { Link } from "react-router-dom";
 import './registration-view.scss';
 
 
@@ -26,7 +27,7 @@ export function RegistrationView(props) {
         console.log(data);
         window.open('/', '_self');
       })
-      .catch(e => {
+      .catch(event => {
         console.log('error registering the user')
       });
     };
@@ -58,7 +59,12 @@ export function RegistrationView(props) {
           <Form.Control type="text" value={birthday} onChange={e => setBirthday(e.target.value)} placeholder="01.01.2000" />
         </Form.Group>
         <Button className="btn-lg btn-dark btn-block" variant="primary" type="button" onClick={handleSubmit}>Register</Button>
-        <Button className="btn-lg btn-light btn-block" type="button" onClick={props.loginComponent}>Login</Button>      
+        <p>
+        Already a Member?
+        </p>
+        <Link to={'/'}>
+          <Button variant="link">Login here</Button>
+        </Link>     
       </Form>
       </div>
     );
