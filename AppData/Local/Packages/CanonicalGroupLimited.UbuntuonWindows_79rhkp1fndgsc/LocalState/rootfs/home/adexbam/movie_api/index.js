@@ -5,7 +5,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 const express = require('express');
 const app = express();
-//const validator = require('express-validator');
+const validator = require('express-validator');
 const morgan = require('morgan');
 const passport = require('passport');
 require('./passport');
@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://myFlixAdeDbAdmin:Ab@17051989@myflixadedb-2isws.m
 mongoose.set('useFindAndModify', false);
 
 //use express validator library
-//app.use(validator());
+app.use(validator());
 
 //serves documentation.html file from public folder
 app.use(express.static('public'));

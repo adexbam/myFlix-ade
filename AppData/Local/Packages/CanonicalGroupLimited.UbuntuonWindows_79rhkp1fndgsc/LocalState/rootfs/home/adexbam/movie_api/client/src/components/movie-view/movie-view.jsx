@@ -33,7 +33,7 @@ class MovieView extends React.Component {
           <div className="label">Director:</div>
           <div className="value">{movie.Director.Name}</div>
         </div>
-       <button onClick={() => onClick()}className="return-button">To movie list</button>
+       <button onClick={() => onClick()} className="return-button">To movie list</button>
        </div>
     );
   }

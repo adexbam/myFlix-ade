@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import './login-view.scss';
-
-import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
+import { Link } from 'react-router-dom';
+
+import './login-view.scss';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -20,7 +21,7 @@ export function LoginView(props) {
       const data = response.data;
       props.onLoggedIn(data);
     })
-    .catch(e => {
+    .catch(event => {
       alert('no such user: ' + username);
     });
   };
@@ -38,14 +39,12 @@ export function LoginView(props) {
       </FormGroup>
       <Button className="btn-lg btn-dark btn-block" type="button" onClick={handleSubmit}>Submit</Button><br></br>
       <Link to={'/register'}>
-        <Button variant="link" className="btn-lg btn-light btn-block">Register</Button>
+            <Button variant="link" className="btn-lg btn-light btn-block">Register</Button>
       </Link>
     </Form>
   );
 }
 
 LoginView.propTypes = {
-  onLoggedIn : PropTypes.func.isRequired,
-  onClick : PropTypes.func.isRequired,
-  register : PropTypes.func.isRequired
+  onLoggedIn : PropTypes.func.isRequired
 }
