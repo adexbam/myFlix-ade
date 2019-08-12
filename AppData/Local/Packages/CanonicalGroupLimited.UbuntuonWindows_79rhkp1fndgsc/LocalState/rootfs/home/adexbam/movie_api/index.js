@@ -5,7 +5,8 @@ const Movies = Models.Movie;
 const Users = Models.User;
 const express = require('express');
 const app = express();
-const validator = require('express-validator');
+//const validator = require('express-validator');
+const { check, validationResult } = require('express-validator');
 const morgan = require('morgan');
 const passport = require('passport');
 require('./passport');
@@ -124,6 +125,7 @@ app.get('/directors/:Name', passport.authenticate('jwt', { session: false }), fu
 
 //Add a user
 app.post('/users', (req, res) => {
+
   // Validation logic here for request
   req.checkBody('Username', 'Username is required').notEmpty();
   req.checkBody('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric()
