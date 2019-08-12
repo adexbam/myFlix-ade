@@ -59,11 +59,12 @@ export function RegistrationView(props) {
           <Form.Control type="text" value={birthday} onChange={e => setBirthday(e.target.value)} placeholder="01.01.2000" />
         </Form.Group>
         <Button className="btn-lg btn-dark btn-block" variant="primary" type="button" onClick={handleSubmit}>Register</Button>
+        <br></br>
         <p>
         Already a Member?
         </p>
         <Link to={'/'}>
-          <Button variant="link">Login here</Button>
+          <Button variant="link" className="btn-lg btn-light btn-block">Login here</Button>
         </Link>     
       </Form>
       </div>
