@@ -76,10 +76,11 @@ export class MainView extends React.Component {
   }
 
   onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
       user: authData.user.Username
     });
-    this.props.setLoggedInUser(authData.user);
+  
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
@@ -97,7 +98,6 @@ export class MainView extends React.Component {
       register: false
     })
   }
-
 
   logOut() {
     //clears storage
@@ -119,7 +119,7 @@ export class MainView extends React.Component {
       <Router>
           <div>
             <Navbar color="info" light>
-            <NavbarBrand href="#" className="mr-auto">MyFlix-Ade</NavbarBrand>
+            <NavbarBrand href="#" className="mr-auto mrAuto">MyFlix-Ade</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse isOpen={!this.state.collapsed} navbar>
               <Nav navbar>
