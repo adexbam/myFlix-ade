@@ -33,6 +33,16 @@ class MainView extends React.Component {
   }
 
   componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/todos')
+      .then(response => {
+        this.props.setMovies(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  
+  componentDidMount() {
     /* set `user` state and call `getMovies` if localStorage contains `token` item */
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
@@ -113,6 +123,7 @@ class MainView extends React.Component {
   }
 
   render() {
+    const { user } = this.state;
 
     if (!user) return <LoginView onLoggedIn={this.onLoggedIn}/>;
 
