@@ -11,6 +11,7 @@ import { setMovies } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
+ // eslint-disable-next-line
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { GenreView } from '../genre-view/genre-view';
@@ -30,16 +31,6 @@ class MainView extends React.Component {
     };
 
     this.toggleNavbar = this.toggleNavbar.bind(this);
-  }
-
-  componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/todos')
-      .then(response => {
-        this.props.setMovies(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
   
   componentDidMount() {
@@ -123,7 +114,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    const { user } = this.state;
+    const { movies, user } = this.state;
 
     if (!user) return <LoginView onLoggedIn={this.onLoggedIn}/>;
 

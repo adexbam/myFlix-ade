@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { BrowserRouter as Router } from "react-router-dom";
 
 import { Link } from 'react-router-dom';
 
@@ -27,6 +28,7 @@ export function LoginView(props) {
   };
 
   return (
+    <Router>
     <Form className="login-form">
       <h2 className="text-center">Login</h2>
       <FormGroup>
@@ -42,6 +44,7 @@ export function LoginView(props) {
             <Button variant="link" className="btn-lg btn-light btn-block">Register</Button>
       </Link>
     </Form>
+    </Router>
   );
 }
 
