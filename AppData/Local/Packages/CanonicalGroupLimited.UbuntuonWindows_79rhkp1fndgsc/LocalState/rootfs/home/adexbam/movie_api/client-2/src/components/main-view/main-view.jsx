@@ -1,9 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
+
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
+import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -14,13 +17,12 @@ import { ProfileView } from '../profile-view/profile-view';
 
 import './main-view.scss';
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
-      movies: [],
       user: null,
       collapsed: true
     };
@@ -46,9 +48,7 @@ export class MainView extends React.Component {
     })
     .then(response => {
       // Assign the result to the state
-      this.setState({
-        movies: response.data
-      });
+      this.props.setMovies(response.data);
     })
     .catch(function (error) {
       console.log(error);
@@ -111,9 +111,8 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
 
-    if (!movies) return <div className="main-view"/>;
+    if (!user) return <LoginView onLoggedIn={this.onLoggedIn}/>;
 
     return (
       <Router>
@@ -136,7 +135,7 @@ export class MainView extends React.Component {
           <div className="main-view">
             <Route exact path="/" render={() => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-              return movies.map(m => <MovieCard key={m._id} movie={m}/>)
+              return <MoviesList/>;
               }
             }/>
             <Route path="/register" render={() => <RegistrationView />} />
@@ -155,3 +154,5 @@ export class MainView extends React.Component {
     );
   }
 } 
+
+export default connect(null, { setMovies } )(MainView);
