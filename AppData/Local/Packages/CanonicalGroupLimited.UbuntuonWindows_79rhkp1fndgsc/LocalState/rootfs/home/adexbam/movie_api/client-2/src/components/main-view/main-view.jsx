@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-import { setMovies } from '../../actions/actions';
+import { setMovies, setLoggedInUser } from '../../actions/actions';
 
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
@@ -83,7 +83,7 @@ class MainView extends React.Component {
     this.setState({
       user: authData.user.Username
     });
-  
+    this.props.setLoggedInUser(authData.data);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
@@ -111,6 +111,8 @@ class MainView extends React.Component {
     this.setState({
       user: null
     })
+    //make login screen appear after logging out
+    window.open('/', '_self');
   }
 
   render() {
@@ -151,4 +153,4 @@ class MainView extends React.Component {
   }
 } 
 
-export default connect(null, { setMovies } )(MainView);
+export default connect(null, { setMovies, setLoggedInUser } )(MainView);
