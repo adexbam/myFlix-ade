@@ -52,6 +52,7 @@ class MainView extends React.Component {
     .then(response => {
       // Assign the result to the state
       this.props.setMovies(response.data);
+      localStorage.setItem('movies', JSON.stringify(response.data));
     })
     .catch(function (error) {
       console.log(error);
@@ -79,7 +80,6 @@ class MainView extends React.Component {
   }
 
   onLoggedIn(authData) {
-    console.log(authData);
     this.setState({
       user: authData.user.Username
     });
@@ -114,9 +114,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
-
-    if (!user) return <LoginView onLoggedIn={this.onLoggedIn}/>;
+    const { user } = this.state;
 
     return (
       <Router>
@@ -139,19 +137,13 @@ class MainView extends React.Component {
           <div className="main-view">
             <Route exact path="/" render={() => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-              return <MoviesList/>;
+              return <MoviesList />;
               }
             }/>
-            <Route path="/register" render={() => <RegistrationView />} />
-            <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/>}/>
-            <Route path="/genres/:name" render={({ match }) => {
-              if (!movies) return <div className="main-view"/>;
-              return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre}/>}
-            } />
-            <Route path="/directors/:name" render={({ match }) => {
-              if (!movies) return <div className="main-view"/>;
-              return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director}/>}
-            } />
+            <Route exact path="/movies/:movieId" render={({match}) => <MovieView movieId={match.params.id}/>}/>
+            <Route exact path="/register" render={() => <RegistrationView onSignedIn={user => this.onSignedIn(user)} />} />
+            <Route exact path="/genres/:name" render={({ match }) => <GenreView genreName={match.params.name}/>}/>
+            <Route exact path="/directors/:name" render={({ match }) => <DirectorView directorName={match.params.name}/>}/>
             <Route exact path="/users/:Username" render={() => <ProfileView />}/>
             </div>
         </Router>
