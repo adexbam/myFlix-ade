@@ -142,7 +142,7 @@ class MainView extends React.Component {
               return <MoviesList />;
               }
             }/>
-            <Route exact path="/movies/:movieId" render={({match}) => <MovieView movieId={match.params.id}/>}/>
+            <Route exact path="/movies/:id" render={(match) => <MovieView movieId={match.params.id}/>}/>
             <Route exact path="/register" render={() => <RegistrationView onSignedIn={user => this.onSignedIn(user)} />} />
             <Route exact path="/genres/:name" render={({ match }) => <GenreView genreName={match.params.name}/>}/>
             <Route exact path="/directors/:name" render={({ match }) => <DirectorView directorName={match.params.name}/>}/>
