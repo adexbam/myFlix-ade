@@ -1,35 +1,34 @@
-import React from "react";
-import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
 import { Link } from 'react-router-dom';
 
-export class DirectorView extends React.Component {
-  render() {
-    const { director } = this.props;
+import './director-view.scss';
 
-    return (
-      <Card style={{ width: '16rem' }}>
-        <Card.Body>
-          <Card.Title>{director.Name}</Card.Title>
-          <Card.Text>{director.Bio}</Card.Text>
-          <Card.Text>{director.Birth}</Card.Text>
-          <Card.Text>{director.Death}</Card.Text>
-          <Link to={'/'}>
-          <Button variant="primary" type="button">
-          Back
-          </Button>
-        </Link>
-        </Card.Body>
-      </Card>
-    );
-  }
+function DirectorView(props) {
+  const { movies, directorName } = props;
+
+  if (!movies || !movies.length) return null;
+
+  const director = movies.find(movie => movie.Director.Name === directorName).Director;
+
+  return (
+    <div className="director-view">
+      <h1 className="director">{director.Name}</h1>
+      <h2>Biography</h2>
+      <div className="bio">{director.Bio}</div>
+      <h2>Born</h2>
+      <div className="birth">{director.Birth}</div>
+      <h2>Died</h2>
+      <div className="death">{director.Death}</div>
+      <Link to={'/'}>
+        <Button variant="primary" type="button">
+        BACK
+        </Button>
+      </Link>
+    </div>
+  );
 }
 
-DirectorView.propTypes = {
-  director: PropTypes.shape ({
-    Name: PropTypes.string,
-    Bio: PropTypes.string
-  }).isRequired
-}
+export default connect(({movies}) => ({movies}))(DirectorView);

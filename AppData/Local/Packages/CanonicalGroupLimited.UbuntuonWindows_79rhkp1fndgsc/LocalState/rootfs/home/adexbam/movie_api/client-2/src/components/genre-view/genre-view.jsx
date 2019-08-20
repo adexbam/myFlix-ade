@@ -1,33 +1,29 @@
-import React from "react";
-import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
 import { Link } from 'react-router-dom';
 
-export class GenreView extends React.Component {
-  render() {
-    const { genre } = this.props;
+import './genre-view.scss';
 
-    return (
-      <Card style={{ width: '16rem' }}>
-        <Card.Body>
-          <Card.Title>{genre.Name}</Card.Title>
-          <Card.Text>{genre.Description}</Card.Text>
-          <Link to={'/'}>
-            <Button variant="primary" type="button">
-            Back
-            </Button>
-          </Link>
-          
-        </Card.Body>
-      </Card>
-    );
-  }
+function GenreView(props) {
+  const { movies, genreName } = props;
+
+  if (!movies || !movies.length) return null;
+
+  const genre = movies.find(movie => movie.Genre.Name === genreName).Genre;
+
+  return (
+    <div className="genre-view">
+      <h1 className="genre">{genre.Name}</h1>
+      <div className="description">{genre.Description}</div>
+      <Link to={'/'}>
+        <Button variant="primary" type="button">
+        BACK
+        </Button>
+      </Link>
+    </div>
+  );
 }
 
-GenreView.propTypes = {
-  genre: PropTypes.shape ({
-    Name: PropTypes.string
-  }).isRequired
-}
+export default connect(({movies}) => ({movies}))(GenreView);
