@@ -57,7 +57,7 @@ app.get("/movies", passport.authenticate('jwt', { session: false }), function(_r
 });
 
 // Adds data for a new movie to the list of movies.
-/*
+
 app.post('/movies', function(req, res) {
   Movies.findOne({ Title : req.body.Title })
   .then(function(movie) {
@@ -84,7 +84,7 @@ app.post('/movies', function(req, res) {
     res.status(500).send("Error: " + error);
   });
 });
-*/
+
 
 // Get a movie by title
 app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), function(req, res) {

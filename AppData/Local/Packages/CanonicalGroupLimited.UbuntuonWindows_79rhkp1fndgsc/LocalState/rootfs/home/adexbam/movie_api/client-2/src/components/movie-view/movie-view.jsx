@@ -12,7 +12,7 @@ class MovieView extends React.Component {
     this.state = {};
   }
   render() {
-    const { movies, onClick, movieId } = this.props;
+    const { movies, movieId } = this.props;
     const movie = movies.filter(movie => movie._id === movieId)[0]
     if (!movie) return null;
     return (
