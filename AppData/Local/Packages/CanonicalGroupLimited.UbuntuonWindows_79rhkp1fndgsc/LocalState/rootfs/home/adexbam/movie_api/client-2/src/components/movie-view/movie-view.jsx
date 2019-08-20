@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-export class MovieView extends React.Component {
+class MovieView extends React.Component {
 
   constructor() {
     super();
     this.state = {};
   }
   render() {
-    const { movie, onClick } = this.props;
+    const { movies, onClick, movieId } = this.props;
+    const movie = movies.filter(movie => movie._id === movieId)[0]
     if (!movie) return null;
     return (
        <div className="movie-view">
@@ -46,6 +48,12 @@ MovieView.propTypes = {
       Director: PropTypes.shape({
         Name: PropTypes.string
       })
-    }).isRequired,
+    }),
     onClick: PropTypes.func.isRequired
 };
+
+const mapStateToProps = state => ({
+  movies: state.movies
+})
+
+export default connect(mapStateToProps, {})(MovieView)

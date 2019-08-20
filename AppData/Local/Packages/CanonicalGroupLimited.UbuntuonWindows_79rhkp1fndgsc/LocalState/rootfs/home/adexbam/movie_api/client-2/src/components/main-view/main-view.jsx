@@ -11,9 +11,9 @@ import { setMovies, setLoggedInUser } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
- // eslint-disable-next-line
+// eslint-disable-next-line
 import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
+import  MovieView  from '../movie-view/movie-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
@@ -122,7 +122,7 @@ class MainView extends React.Component {
       <Router>
           <div>
             <Navbar color="info" light>
-            <NavbarBrand href="#" className="mr-auto mrAuto">MyFlix-Ade</NavbarBrand>
+            <NavbarBrand href="/" className="mr-auto mrAuto">MyFlix-Ade</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse isOpen={!this.state.collapsed} navbar>
               <Nav navbar>

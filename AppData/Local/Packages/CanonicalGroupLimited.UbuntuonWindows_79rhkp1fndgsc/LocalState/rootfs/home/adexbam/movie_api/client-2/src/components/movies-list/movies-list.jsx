@@ -14,7 +14,7 @@ const mapStateToProps = state => {
   });
 
   if (visibilityFilter !== '') {
-    moviesToShow = moviesToShow.filter(m => m.Title.includes(visibilityFilter));
+    moviesToShow = moviesToShow.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
   }
 
   return { movies: moviesToShow };
