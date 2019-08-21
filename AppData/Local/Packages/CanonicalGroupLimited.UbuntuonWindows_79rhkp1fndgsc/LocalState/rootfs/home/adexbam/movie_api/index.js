@@ -9,7 +9,7 @@ const validator = require('express-validator');
 const morgan = require('morgan');
 const passport = require('passport');
 require('./passport');
-const cors = require('cors');
+//const cors = require('cors');
 const path = require('path');
 
 //mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true});
@@ -25,7 +25,7 @@ app.use(express.static('public'));
 app.use(morgan('common'));
 app.use(bodyParser.json());
 
-
+/*
 app.use(cors());
 //CORS code to allow requests from only certain origins to be given access
 var allowedOrigins = ['http://localhost:1234', 'http://localhost:3000', 'http://myflix-ade.herokuapp.com'];
@@ -41,6 +41,7 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+*/
 
 //import “auth.js” file into your project
 require('./auth')(app);
