@@ -10,6 +10,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 require('./passport');
 const cors = require('cors');
+const path = require('path');
 
 //mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true});
 mongoose.connect('mongodb+srv://myFlixAdeDbAdmin:Ab@17051989@myflixadedb-2isws.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
@@ -282,6 +283,17 @@ app.use(function (err, _req, res, _next) {
 // GET requests
 app.get('/', function(_req, res) {
   res.send('Welcome to myFlix movies!');
+});
+
+// Serves documentation file
+app.get('/documentation', (_req, res) => {
+  res.sendFile('/public/documentation.html', { root: __dirname })
+});
+
+//Deploy to heroku
+app.use(express.static(path.join(__dirname, 'client-2/build')))
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client-2/build/index.html'))
 });
 
 
