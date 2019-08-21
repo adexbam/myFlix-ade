@@ -280,10 +280,10 @@ app.use(function (err, _req, res, _next) {
   res.status(500).send('Ooops! Something went wrong!');
 });
 
-// GET requests
+/*// GET requests
 app.get('/', function(_req, res) {
   res.send('Welcome to myFlix movies!');
-});
+});*/
 
 // Serves documentation file
 app.get('/documentation', (_req, res) => {
