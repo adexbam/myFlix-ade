@@ -292,9 +292,15 @@ app.get('/documentation', (_req, res) => {
 
 //Deploy to heroku
 app.use(express.static(path.join(__dirname, 'client-2/build')))
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname + '/client-2/build/index.html'))
 });
+
+// routes to index.html on root level
+app.get('/', function(req, res) {
+  res.send(index.html);
+});
+
 
 
 // listen for requests
