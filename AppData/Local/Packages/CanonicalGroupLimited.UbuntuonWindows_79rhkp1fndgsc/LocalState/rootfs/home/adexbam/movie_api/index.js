@@ -285,21 +285,15 @@ app.get('/', function(_req, res) {
   res.send('Welcome to myFlix movies!');
 });*/
 
-// Serves documentation file
-app.get('/documentation', (_req, res) => {
-  res.sendFile('/public/documentation.html', { root: __dirname })
-});
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 
-//Deploy to heroku
-app.use(express.static(path.join(__dirname, 'client-2/build')))
-app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname + '/client-2/build/index.html'))
-});
-
-// routes to index.html on root level
-app.get('/', function(req, res) {
-  res.send(index.html);
-});
 
 
 
