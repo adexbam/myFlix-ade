@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Button from 'react-bootstrap/Button';
+
+import { Link } from "react-router-dom";
 
 class MovieView extends React.Component {
 
   constructor() {
     super();
-
     this.state = {};
   }
-
   render() {
-    const { movie, onClick } = this.props;
-
+    const { movies, movieId } = this.props;
+    const movie = movies.filter(movie => movie._id === movieId)[0]
     if (!movie) return null;
-
     return (
        <div className="movie-view">
         <div className="movie-title">
@@ -24,16 +25,26 @@ class MovieView extends React.Component {
           <div className="label">Description:</div>
           <div className="value">{movie.Description}</div>
         </div>
-        <img className="movie-poster" src={movie.ImagePath} />
+        <img className="movie-poster" alt='' src={movie.ImagePath} />
         <div className="movie-genre">
           <div className="label">Genre:</div>
           <div className="value">{movie.Genre.Name}</div>
-        </div>
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="link">Genre</Button>
+          </Link>
+          </div>
         <div className="movie-director">
           <div className="label">Director:</div>
           <div className="value">{movie.Director.Name}</div>
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="link">Director</Button>
+          </Link>
         </div>
-       <button onClick={() => onClick()} className="return-button">To movie list</button>
+       <Link to={'/'}>
+          <Button className="view-btn" variant="primary" type="button">
+          Back To movie list
+          </Button>
+        </Link>
        </div>
     );
   }
@@ -41,25 +52,20 @@ class MovieView extends React.Component {
 
 MovieView.propTypes = {
     movie: PropTypes.shape({
-      Title: PropTypes.string
-    }).isRequired,
-    movie: PropTypes.shape({
-      Description: PropTypes.string
-    }).isRequired,
-    movie: PropTypes.shape({
-      ImagePath: PropTypes.string
-    }).isRequired,
-    movie: PropTypes.shape({
+      Title: PropTypes.string,
+      Description: PropTypes.string,
+      ImagePath: PropTypes.string,
       Genre: PropTypes.shape({
         Name: PropTypes.string
-      })
-    }).isRequired,
-    movie: PropTypes.shape({
+      }),
       Director: PropTypes.shape({
         Name: PropTypes.string
       })
-    }).isRequired,
-    onClick: PropTypes.func.isRequired
+    }),
 };
 
-export default MovieView
+const mapStateToProps = state => ({
+  movies: state.movies
+})
+
+export default connect(mapStateToProps, {})(MovieView)

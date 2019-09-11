@@ -3,6 +3,7 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 
 import './registration-view.scss';
@@ -27,7 +28,7 @@ export function RegistrationView(props) {
         console.log(data);
         window.open('/', '_self');
       })
-      .catch(event => {
+      .catch(e => {
         console.log('error registering the user')
       });
     };
@@ -58,13 +59,23 @@ export function RegistrationView(props) {
           <Form.Label>Your Birthday</Form.Label>
           <Form.Control type="text" value={birthday} onChange={e => setBirthday(e.target.value)} placeholder="01.01.2000" />
         </Form.Group>
-        <Button className="btn-lg btn-dark btn-block" variant="primary" type="button" onClick={handleSubmit}>Register</Button>
-        <Button className="btn-lg btn-light btn-block" type="button" onClick={props.loginComponent}>Login</Button>      
+        <Button variant="dark" type="button" className="btn-lg btn-dark btn-block" onClick={handleSubmit}>
+        Register
+        </Button>
+        <br></br>
+        <p>
+        Already a Member?
+        </p>
+        <Link to={'/'}>
+          <Button variant="primary" type="button"  className="btn-lg btn-light btn-block">
+          Back
+          </Button>
+        </Link>
       </Form>
       </div>
     );
   }
 
   RegistrationView.propTypes = {
-    loginComponent: PropTypes.func.isRequired,
+    loginComponent: PropTypes.func
   }
