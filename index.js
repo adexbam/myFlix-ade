@@ -9,8 +9,7 @@ const validator = require('express-validator');
 const morgan = require('morgan');
 const passport = require('passport');
 require('./passport');
-//const cors = require('cors');
-const path = require('path');
+const cors = require('cors');
 
 //mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true});
 mongoose.connect('mongodb+srv://myFlixAdeDbAdmin:Ab@17051989@myflixadedb-2isws.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
@@ -25,7 +24,7 @@ app.use(express.static('public'));
 app.use(morgan('common'));
 app.use(bodyParser.json());
 
-/*
+
 app.use(cors());
 //CORS code to allow requests from only certain origins to be given access
 var allowedOrigins = ['http://localhost:1234', 'http://localhost:3000', 'http://myflix-ade.herokuapp.com'];
@@ -41,7 +40,6 @@ app.use(cors({
     return callback(null, true);
   }
 }));
-*/
 
 //import “auth.js” file into your project
 require('./auth')(app);
@@ -59,7 +57,7 @@ app.get("/movies", passport.authenticate('jwt', { session: false }), function(_r
 });
 
 // Adds data for a new movie to the list of movies.
-
+/*
 app.post('/movies', function(req, res) {
   Movies.findOne({ Title : req.body.Title })
   .then(function(movie) {
@@ -86,7 +84,7 @@ app.post('/movies', function(req, res) {
     res.status(500).send("Error: " + error);
   });
 });
-
+*/
 
 // Get a movie by title
 app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), function(req, res) {
@@ -281,23 +279,10 @@ app.use(function (err, _req, res, _next) {
   res.status(500).send('Ooops! Something went wrong!');
 });
 
-/*
 // GET requests
 app.get('/', function(_req, res) {
   res.send('Welcome to myFlix movies!');
 });
-*/
-
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client-2/build')));
-// Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client-2/build', 'index.html'));
-  });
-}
-
-
 
 
 // listen for requests
