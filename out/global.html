@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Global</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createNewUser"><span class="type-signature"></span>createNewUser<span class="signature">(endpoint, userData)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    create new user <br>endpoint URL: /users <br>POST request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>endpoint</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line170">line 170</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>call method:handleSubmit = (event) => { event.preventDefault(); axios.post('http://myflix-ade.herokuapp.com/users', {     Username: username, // required     Password: password, // required     EMail: email, // required     Birthday: birthday, }) .then(response => {   const data = response.data;   console.log(data);   window.open('/', '_self'); }) .catch(e => {   console.log('error registering the user') });}</code></pre>
+
+    <pre class="prettyprint"><code>example response:{
+id : '2',
+Username: ‚John Doo‘,
+Password: ‚XXXXXXX‘,
+EMail: ‚polanski@example.com',
+Birthday: '1985-04-20T00:00:00Z'
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getMovies"><span class="type-signature"></span>getMovies<span class="signature">(endpoint, authorization)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    returns json object of topMovies object to user <br>endpoint URL: /movies <br>GET request <br>no required params
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>endpoint</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>authorization</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>call the method:getMovies(token) {   axios.get('http://myflix-ade.herokuapp.com/movies', {     headers: { Authorization: `Bearer ${token}` }   })   .then(response => {     this.props.setMovies(response.data);     localStorage.setItem('movies', JSON.stringify(response.data));   })   .catch(function(error) {     console.log(error);   });  }</code></pre>
+
+    <pre class="prettyprint"><code>example response of method:{
+id : 1,
+Title : 'Snatch',
+Description: 'Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.’,
+Genre: {
+Name: 'Comedy'
+Description: 'Comedy is a genre of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect.'
+},
+Director : {
+Name : 'Guy Ritchie',
+Bio : 'Guy Stuart Ritchie is an english filmmaker and businessman, known for his crime films.',
+Birth : '1968',
+Death : 'n/a',
+Movies: [ 'Snatch', 'Lock, Stock &amp; Two Smoking Barrels', 'Sherlock Holmes' ]
+},
+ImagePath: 'https://www.imdb.com/title/tt0208092/mediaviewer/rm1248859904',
+Featured: true,
+Actors: [ 'Brad Pitt', 'Jason Statham', 'Vinnie Jones', 'Benicio del Toro' ],
+IMDBRating: '8.3',
+ReleaseYear: '2000'
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateUserData"><span class="type-signature"></span>updateUserData<span class="signature">(endpoint, authorization, newUserData)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    update the user info (username, password, email, date of birth) by username <br>endpoint URL: /users/:username <br>PUT request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>endpoint</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>authorization</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newUserData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line272">line 272</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>calling the method:handleSubmit(event) { event.preventDefault(); console.log(this.state.username); axios.put(`http://myflix-ade.herokuapp.com/users/${localStorage.getItem('user')}`, {   Username: this.state.usernameForm,   Password: this.state.passwordForm,   EMail: this.state.emailForm,   Birthday: this.state.birthdayForm }, {   headers: { Authorization: `Bearer ${localStorage.getItem('token')}`} }) .then(response => {   console.log(response);   alert('Your data has been updated!');   //update localStorage   localStorage.setItem('user', this.state.usernameForm);   // call getUser() to dusplay changed userdata after submission   this.getUser(localStorage.getItem('token'));   // reset form after submitting data   document.getElementsByClassName('changeDataForm')[0].reset(); }) .catch(event => {   console.log('error updating the userdata');   alert('Ooooops... Something went wrong!'); });};</code></pre>
+
+    <pre class="prettyprint"><code>example response:{
+n: 1,
+nModified: 1,
+ok: 1
+}</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createNewUser">createNewUser</a></li><li><a href="global.html#getMovies">getMovies</a></li><li><a href="global.html#updateUserData">updateUserData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Nov 25 2019 04:05:42 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
